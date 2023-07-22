@@ -1,0 +1,23 @@
+{
+  "name": "elis",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "script": {
+    "start": "bun --watch run ./index.ts"
+  },
+  "dependencies": {
+    "@elysiajs/cookie": "^0.5.2",
+    "@elysiajs/cron": "^0.5.3",
+    "@elysiajs/html": "^0.5.2",
+    "@elysiajs/static": "^0.5.3",
+    "@elysiajs/swagger": "^0.5.2",
+    "colors": "^1.4.0",
+    "elysia": "^0.5.22"
+  }
+}
