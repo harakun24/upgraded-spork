@@ -1,6 +1,8 @@
-import Elysia from "elysia";
+import Elysia, { ElysiaInstance, LocalHandler, TypedSchema } from "elysia";
 
-export default interface IRoute {
+export interface IRoute {
   path: string;
   route: Function
 }
+
+export type handler = LocalHandler<TypedSchema<never>, ElysiaInstance, "/">

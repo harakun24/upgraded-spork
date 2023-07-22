@@ -14,7 +14,7 @@ export default (title?: string, data?: any) => vtemplate(title, {
     // style: "height:auto",
     style: "flex:1",
 
-    h2: { text: "Halaman default" },
+    h2: { text: "Daftar Users" },
     div: data.map((e: any) => ({
         class: "card m-2",
         // h5: { class: "card-header", text: "A card" },

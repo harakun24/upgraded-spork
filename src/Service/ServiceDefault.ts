@@ -12,7 +12,7 @@ class ServiceDefault implements IService {
   }
   view({ request }: param) { return html(vDefault("Default page", Model.User.findAll()), request) }
 
-  details({ request, params }: param) { return html(vdetails("Default page", Model.User.findById(params!.id as number) as { no: number, nama: string }), request) }
+  details({ request, params }: param) { return html(vdetails("Default page", Model.User.findById(params!.id) as { no: number, nama: string }), request) }
 
   delete({ set, params }: param) {
     try {
@@ -21,7 +21,7 @@ class ServiceDefault implements IService {
     } catch (e) {
       console.log(e)
     }
-    set.redirect = "/";
+    set!.redirect = "/";
   }
 }
 
