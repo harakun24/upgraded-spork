@@ -1,7 +1,7 @@
 import Default from "./RouteDefault";
 import Elysia from "elysia";
 import ServiceDefault from "../Service/ServiceDefault";
-import IRoute from "./IRoute";
+import { IRoute, handler } from "./IRoute";
 
 export namespace Router {
   let count = 0;
@@ -13,7 +13,7 @@ export namespace Router {
     }
 
     app //server
-      .get("/", ServiceDefault.view)
+      .get("/", ServiceDefault.view as unknown as handler)
       .get("/loader", () => count++)
 
     routing(Default)

@@ -23,6 +23,15 @@ class ServiceDefault implements IService {
     }
     set!.redirect = "/";
   }
+
+  create({ set, body }: param) {
+    try {
+      Model.User.create({ nama: body!.uname as string })
+    } catch (error) {
+      console.log(error)
+    }
+    set!.redirect = "/";
+  }
 }
 
 export default new ServiceDefault();
