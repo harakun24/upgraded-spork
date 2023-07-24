@@ -1,24 +1,28 @@
 import Database from "bun:sqlite";
-import IModel from "./IModel";
+import base from "./ModelBase";
 
-export default class ModelUser implements IModel {
-    db: Database;
+export default class ModelUser extends base {
     name = "user";
     constructor(db: Database) {
-        this.db = db
+        super(db);
+        this.init();
     }
-    init() {
-        this.db.query(`create table if not exists ${this.name}(
-            no integer primary key autoincrement,
-            nama text not null
-        )`).run();
+    schema = {
+        no: {
+            type: "integer",
+            props: ["primary key", "autoincrement"]
+        },
+        nama: {
+            type: "text",
+            props: ["not null"]
+        }
     }
     create(data: { nama: string }) {
         this.db.prepare(`insert into ${this.name}(nama) values ($nama)`).run(data.nama);
         return this.findAll();
     }
-    findAll() {
-        return this.db.query(`select * from ${this.name}`).all()
+    findAll(condition: string = "true") {
+        return this.db.query(`select * from ${this.name} where ${condition}`).all()
     }
     findById(id: number) {
         return this.db.query(`select * from ${this.name} where no=$id`).get({ $id: id })

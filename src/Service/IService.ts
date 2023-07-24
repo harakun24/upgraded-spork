@@ -1,5 +1,13 @@
-export interface IService {
+import { Model } from "../Model";
+import "colors";
 
+export abstract class ServiceBase {
+    Model = Model;
+    constructor(name: string) {
+        console.log(`|-- service `.cyan + name.yellow + ` ---|
+        `.cyan)
+    }
+    abstract view(arg: param | undefined): Response | void
 }
 
 export type param = {

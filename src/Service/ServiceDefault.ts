@@ -1,14 +1,13 @@
-import { IService, param } from "./IService";
+import { ServiceBase, param } from "./IService";
 import html from "../render"
 import vDefault from "../View/vdefault"
 import vdetails from "../View/vdetails";
 vdetails
 
 import { Model } from "../Model";
-class ServiceDefault implements IService {
+class ServiceDefault extends ServiceBase {
   constructor() {
-    console.log(Model.User.findAll())
-    console.log("default controller created")
+    super("default")
   }
   view({ request }: param) { return html(vDefault("Default page", Model.User.findAll()), request) }
 
